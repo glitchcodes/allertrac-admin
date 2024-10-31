@@ -35,26 +35,11 @@
           <span>Home</span>
         </NuxtLink>
       </li>
-
       <li>
-        <details open>
-          <summary>
-            <RectangleStackIcon class="size-5" />
-            Food Database
-          </summary>
-          <ul>
-            <li>
-              <NuxtLink to="/meals" active-class="active">
-                <span>with Allergens</span>
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/meals/attention" active-class="active">
-                <span>without Allergens</span>
-              </NuxtLink>
-            </li>
-          </ul>
-        </details>
+        <NuxtLink to="/meals" active-class="active">
+          <RectangleStackIcon class="size-5" />
+          Food Database
+        </NuxtLink>
       </li>
     </ul>
   </section>
