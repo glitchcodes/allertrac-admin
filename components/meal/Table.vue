@@ -24,8 +24,10 @@
           {{ meal.name }}
         </td>
         <td>
-          <div v-for="allergen in meal.allergens" class="badge badge-primary">
-            {{ allergen.name }}
+          <div class="flex gap-2">
+            <div v-for="allergen in meal.allergens" class="badge badge-primary">
+              {{ allergen.name }}
+            </div>
           </div>
           <div v-if="meal.allergens.length === 0" class="badge badge-error">
             No allergens found
