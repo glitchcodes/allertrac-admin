@@ -8,7 +8,6 @@ export const handleFetch = async (event: H3Event, url: string, options: any = {}
   const token = cookies?.token;
 
   const defaultHeaders = {
-    'Content-Type': 'application/json',
     ...options.headers
   };
 
