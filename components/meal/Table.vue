@@ -9,7 +9,7 @@
 
 <template>
   <div class="overflow-x-auto">
-    <table class="table">
+    <table class="table table-sm md:table-md table-auto">
       <!-- head -->
       <thead>
       <tr>
@@ -23,7 +23,7 @@
         <td>
           {{ meal.name }}
         </td>
-        <td>
+        <td class="hidden md:table-cell">
           <div class="flex gap-2">
             <div v-for="allergen in meal.allergens" class="badge badge-primary">
               {{ allergen.name }}
