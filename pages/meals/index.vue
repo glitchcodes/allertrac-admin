@@ -44,8 +44,8 @@
 
     <div v-if="status === 'success'">
       <div v-if="data && data.payload.data.length > 0">
-        <div class="card bg-base-300">
-          <div class="card-body">
+        <div class="md:card md:bg-base-300">
+          <div class="md:card-body">
             <MealTable v-if="data" :meals="data.payload" limit="10"  />
           </div>
         </div>
