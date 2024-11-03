@@ -3,7 +3,7 @@
   import { useCurrentPage } from "~/composables/useCurrentPage";
 
   import { ModalsContainer } from "vue-final-modal";
-  import SidebarComponent from "~/components/SidebarComponent.vue";
+  import Sidebar from "~/components/Sidebar.vue";
 
   const { currentPage } = useCurrentPage();
 
@@ -14,7 +14,7 @@
   <main>
     <div class="flex min-h-screen">
       <aside class="w-full max-w-80 bordered hidden md:block sidebar-wrapper" :class="{ '-ml-80': !isSidebarOpen }">
-        <SidebarComponent :open="isSidebarOpen" @close="() => isSidebarOpen = !isSidebarOpen" />
+        <Sidebar :open="isSidebarOpen" @close="() => isSidebarOpen = !isSidebarOpen" />
       </aside>
 
       <div class="flex-1">
