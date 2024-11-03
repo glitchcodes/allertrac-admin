@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { AdjustmentsHorizontalIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/solid";
   import type { Response } from "~/types/Response"
   import type { MealCollection } from "~/types/Meal"
 
@@ -8,12 +9,17 @@
 
   const currentPage = ref(1);
   const selectedFilter = ref('all');
+  const searchQuery = ref('');
 
   const url = computed(() => {
     let endpoint = `/api/meals?page=${currentPage.value}`;
 
     if (selectedFilter.value !== 'all') {
       endpoint = endpoint + `&filter=${selectedFilter.value}`
+    }
+
+    if (searchQuery.value.length > 0) {
+      endpoint = endpoint + `&query=${searchQuery.value}`
     }
 
     return endpoint
@@ -23,31 +29,51 @@
     pick: ['payload']
   });
 
-
-  watch(selectedFilter, async () => {
-    await refresh();
-  });
-
   const handlePaginationChange = (e: number) => {
     currentPage.value = e;
   }
+
+  const handleQueryChange = useDebounceFn((e) => {
+    searchQuery.value = e.target.value
+  }, 1500);
 
 </script>
 
 <template>
   <div>
-    <select v-model="selectedFilter" :disabled="status !== 'success'" class="select select-bordered w-full max-w-xs mb-5">
-      <option value="all">
-        All
-      </option>
-      <option value="good">
-        With Allergens
-      </option>
-      <option value="bad">
-        Without Allergens
-      </option>
-    </select>
+    <div class="flex gap-3 mb-5">
+      <label class="input input-bordered flex items-center w-full md:w-auto gap-2">
+        <input type="text" class="grow" placeholder="Search" :value="searchQuery" @input="handleQueryChange" />
+        <MagnifyingGlassIcon class="size-4" />
+      </label>
 
+      <details class="dropdown dropdown-end">
+        <summary class="btn">
+          <AdjustmentsHorizontalIcon class="size-5" />
+        </summary>
+        <div class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 mt-3 p-4 pt-2 shadow border border-base-200">
+          <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">
+                Filter
+              </span>
+            </div>
+            <select v-model="selectedFilter" :disabled="status !== 'success'" class="select select-bordered">
+              <option value="all">
+                All
+              </option>
+              <option value="good">
+                With Allergens
+              </option>
+              <option value="bad">
+                Without Allergens
+              </option>
+            </select>
+          </label>
+        </div>
+      </details>
+
+    </div>
     <div v-if="status === 'success'">
       <div v-if="data && data.payload.data.length > 0">
         <div class="md:card md:bg-base-300">

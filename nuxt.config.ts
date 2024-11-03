@@ -5,6 +5,9 @@ export default defineNuxtConfig({
     '~/assets/css/main.scss',
     'vue-final-modal/style.css'
   ],
+  modules: [
+    '@vueuse/nuxt',
+  ],
   devtools: { enabled: true },
   postcss: {
     plugins: {
