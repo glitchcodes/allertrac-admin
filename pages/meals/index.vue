@@ -7,10 +7,16 @@
   });
 
   const currentPage = ref(1);
-  const selectedFilter = ref('');
+  const selectedFilter = ref('all');
 
   const url = computed(() => {
-    return `/api/meals?page=${currentPage.value}&filter=${selectedFilter.value}`
+    let endpoint = `/api/meals?page=${currentPage.value}`;
+
+    if (selectedFilter.value !== 'all') {
+      endpoint = endpoint + `&filter=${selectedFilter.value}`
+    }
+
+    return endpoint
   })
 
   const { data, status, error, refresh } = await useLazyFetch<Response<MealCollection>>(url, {
@@ -31,8 +37,8 @@
 <template>
   <div>
     <select v-model="selectedFilter" :disabled="status !== 'success'" class="select select-bordered w-full max-w-xs mb-5">
-      <option disabled selected value="">
-        Filter
+      <option value="all">
+        All
       </option>
       <option value="good">
         With Allergens
