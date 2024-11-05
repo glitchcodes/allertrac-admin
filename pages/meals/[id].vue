@@ -82,7 +82,7 @@
 
 <template>
   <div class="flex flex-col md:flex-row">
-    <div class="w-full md:w-3/12 card bg-base-200">
+    <div class="w-full xl:w-3/12 card bg-base-200">
       <div v-if="status === 'success'" class="card-body gap-4">
         <h1 class="text-2xl font-bold">
           {{ meal?.payload.name }}
