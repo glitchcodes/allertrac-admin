@@ -5,7 +5,8 @@
   import type { Allergen } from "~/types/Allergen";
 
   definePageMeta({
-    title: 'Meal'
+    title: 'Meal',
+    middleware: ['sanctum:auth']
   });
 
   const route = useRoute();
