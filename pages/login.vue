@@ -55,7 +55,7 @@
 </script>
 
 <template>
-  <div class="login-container">
+  <div class="auth-container">
     <div class="card bg-base-200 w-96 shadow-xl">
       <div class="card-body">
         <h2 class="text-xl font-bold">
