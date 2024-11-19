@@ -5,9 +5,10 @@ export const handleFetch = async (event: H3Event, url: string, options: any = {}
   const baseURL = process.env.API_BASEURL;
 
   const cookies = parseCookies(event);
-  const token = cookies?.token;
+  const token = cookies['sanctum.token.cookie'];
 
   const defaultHeaders = {
+    Accept: 'application/json',
     ...options.headers
   };
 
@@ -19,6 +20,7 @@ export const handleFetch = async (event: H3Event, url: string, options: any = {}
     return await $fetch(url, {
       baseURL: baseURL,
       headers: defaultHeaders,
+      credentials: 'include',
       ...options
     });
   } catch (error) {

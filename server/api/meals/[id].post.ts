@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     }
   })
 
-  return await handleFetch(event, `/meal/${id}`, {
+  return await handleFetch(event, `/admin/meal/${id}`, {
     method: 'POST',
     body: formData
   });

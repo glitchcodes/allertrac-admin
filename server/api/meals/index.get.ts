@@ -9,5 +9,5 @@ export default defineEventHandler(async (event) => {
     ])
   ).toString();
 
-  return await handleFetch(event, `/meal?${encodedQueryString}`, {method: 'GET'});
+  return await handleFetch(event, `/admin/meal?${encodedQueryString}`, { method: 'GET' });
 });
