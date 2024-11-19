@@ -4,7 +4,8 @@
   import type { MealCollection } from "~/types/Meal"
 
   definePageMeta({
-    title: 'Food Database'
+    title: 'Food Database',
+    middleware: ['sanctum:auth']
   });
 
   const currentPage = ref(1);
