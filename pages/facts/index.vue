@@ -105,6 +105,9 @@
         </div>
       </details>
 
+      <NuxtLink to="/facts/new" class="btn btn-primary ml-auto">
+        New Fact
+      </NuxtLink>
     </div>
     <div v-if="status === 'success'">
       <div v-if="data && data.payload.data.length > 0">
