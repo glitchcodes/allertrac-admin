@@ -2,7 +2,8 @@
   import {
     HomeIcon,
     RectangleStackIcon,
-    ArrowLeftStartOnRectangleIcon
+    ArrowLeftStartOnRectangleIcon,
+    AcademicCapIcon
   } from "@heroicons/vue/24/outline";
 
   const props = withDefaults(defineProps<{
@@ -33,6 +34,12 @@
         <NuxtLink to="/" active-class="active">
           <HomeIcon class="size-5" />
           <span>Home</span>
+        </NuxtLink>
+      </li>
+      <li>
+        <NuxtLink to="/facts" active-class="active">
+          <AcademicCapIcon class="size-5" />
+          Facts Database
         </NuxtLink>
       </li>
       <li>

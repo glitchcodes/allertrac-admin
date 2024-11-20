@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   css: [
     '~/assets/css/main.scss',
-    'vue-final-modal/style.css'
+    'vue-final-modal/style.css',
+    '@vueup/vue-quill/dist/vue-quill.snow.css'
   ],
   runtimeConfig: {
     public: {
