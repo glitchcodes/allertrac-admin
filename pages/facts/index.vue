@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { AdjustmentsHorizontalIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/solid";
-  import type { FactCategory, FactCollection } from "~/types/Fact";
+  import type {Fact, FactCategory, FactCollection} from "~/types/Fact";
   import type { Response } from "~/types/Response";
 
   definePageMeta({
@@ -31,9 +31,15 @@
     return endpoint
   })
 
-  const { data, status, error, refresh } = await useLazyFetch<Response<FactCollection>>(url, {
+  const facts = ref<Fact[]>([])
+
+  const { data, status } = await useFetch<Response<FactCollection>>(url, {
     pick: ['payload']
   });
+
+  if (data.value) {
+    facts.value = data.value.payload.data
+  }
 
   const handlePaginationChange = (e: number) => {
     currentPage.value = e;
@@ -67,6 +73,11 @@
     } finally {
       isFetchingCategories.value = false;
     }
+  }
+
+  // Delete Fact
+  const handleDeleteFact = (e: Fact) => {
+    facts.value = facts.value.filter((i) => i.id !== e.id)
   }
 </script>
 
@@ -110,10 +121,10 @@
       </NuxtLink>
     </div>
     <div v-if="status === 'success'">
-      <div v-if="data && data.payload.data.length > 0">
+      <div v-if="facts && facts.length > 0">
         <div class="md:card md:bg-base-300">
           <div class="md:card-body">
-            <FactsTable v-if="data" :facts="data.payload" limit="10"  />
+            <FactsTable v-if="facts" :facts="facts" limit="10" @delete-fact="handleDeleteFact"  />
           </div>
         </div>
 

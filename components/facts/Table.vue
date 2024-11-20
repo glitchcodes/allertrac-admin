@@ -1,10 +1,38 @@
 <script setup lang="ts">
-import { PencilSquareIcon } from "@heroicons/vue/24/solid";
-import type { FactCollection } from "~/types/Fact";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/vue/24/solid";
+import type {Fact, FactCollection} from "~/types/Fact";
+import {useModal} from "vue-final-modal";
+import {ModalDeleteFact} from "#components";
 
-const props = defineProps<{
-  facts: FactCollection
+const emit = defineEmits<{
+  (e: 'deleteFact', fact: Fact): void
 }>()
+
+defineProps<{
+  facts: Fact[]
+}>();
+
+// Modals
+const openDeleteModal = (fact: Fact) => {
+  const modal = useModal({
+    component: ModalDeleteFact,
+    attrs: {
+      fact: fact,
+      onDelete(fact: Fact) {
+        // Remove fact from table
+        emit('deleteFact', fact)
+
+        // Close Modal
+        modal.close()
+      },
+      onClose() {
+        modal.close();
+      }
+    }
+  })
+
+  modal.open();
+}
 </script>
 
 <template>
@@ -21,7 +49,7 @@ const props = defineProps<{
       </tr>
       </thead>
       <tbody>
-      <tr v-for="fact in facts.data" class="hover">
+      <tr v-for="fact in facts" class="hover">
         <td>
           {{ fact.title }}
         </td>
@@ -34,10 +62,13 @@ const props = defineProps<{
         <td>
           {{ fact.author.full_name }}
         </td>
-        <td>
-          <NuxtLink :to="`/facts/${ fact.id }`" class="btn btn-sm">
+        <td class="flex gap-2">
+          <NuxtLink :to="`/facts/${ fact.id }`" class="btn btn-accent btn-sm">
             <PencilSquareIcon class="size-5"/>
           </NuxtLink>
+          <button class="btn btn-error btn-sm" @click="openDeleteModal(fact)">
+            <TrashIcon class="size-5" />
+          </button>
         </td>
       </tr>
       </tbody>

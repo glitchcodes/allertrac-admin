@@ -5,7 +5,7 @@
   import type { Fact, FactCategory } from "~/types/Fact";
 
   definePageMeta({
-    title: 'Create Fact',
+    title: 'Edit Fact',
     middleware: ['sanctum:auth']
   });
 

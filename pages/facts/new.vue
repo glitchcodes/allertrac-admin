@@ -10,6 +10,7 @@
   });
 
   const { $toast } = useNuxtApp();
+  const router = useRouter();
 
   // Get fact categories
   type FactCategoryResponse<T> = {
@@ -83,6 +84,8 @@
         $toast.success("Fact created", {
           position: $toast.POSITION.BOTTOM_CENTER
         });
+
+        await router.push('/facts')
       }
     } catch (e) {
       if (e instanceof FetchError) {
