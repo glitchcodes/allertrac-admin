@@ -12,6 +12,8 @@
     middleware: ['sanctum:guest']
   });
 
+  const isSubmitting = ref(false);
+
   const form = reactive({
     email: '',
     password: ''
@@ -25,6 +27,9 @@
 
   const handleSubmitForm = async () => {
     try {
+      // Show loading indicator
+      isSubmitting.value = true;
+
       // Clear errors
       clearErrors();
 
@@ -50,6 +55,8 @@
             break;
         }
       }
+    } finally {
+      isSubmitting.value = false;
     }
   }
 </script>
@@ -87,8 +94,11 @@
           </div>
 
           <div class="card-actions justify-end">
-            <button type="submit" class="btn btn-primary">
+            <button v-if="!isSubmitting" type="submit" class="btn btn-primary">
               Login
+            </button>
+            <button v-else class="btn btn-primary" disabled>
+              <span class="loading loading-spinner loading-md"></span>
             </button>
           </div>
         </form>
