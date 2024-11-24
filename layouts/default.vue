@@ -4,10 +4,14 @@
 
   import { ModalsContainer } from "vue-final-modal";
   import Sidebar from "~/components/Sidebar.vue";
+  import type { User } from "~/types/User";
 
   const { currentPage } = useCurrentPage();
 
   const isSidebarOpen = ref<boolean>(true);
+
+  const sanctumUser = useSanctumUser<User>();
+  const user = sanctumUser.value?.user
 </script>
 
 <template>
@@ -28,6 +32,22 @@
           </div>
           <div class="flex-1">
             <p class="font-bold">{{ currentPage }}</p>
+          </div>
+          <div class="flex-none">
+            <ul class="menu menu-horizontal px-1">
+              <li>
+                <details>
+                  <summary>{{ user?.full_name }}</summary>
+                  <ul class="bg-base-100 rounded-t-none p-2">
+                    <li>
+                      <NuxtLink to="/logout">
+                        Logout
+                      </NuxtLink>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
           </div>
         </div>
 
