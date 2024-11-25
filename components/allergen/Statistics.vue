@@ -23,7 +23,7 @@
           {
             label: 'Users',
             data: statistics.value.map(s => s.user_count),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
             borderColor: 'rgba(75, 192, 192, 1)'
           }
         ]
