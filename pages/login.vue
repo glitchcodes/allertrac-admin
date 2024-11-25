@@ -93,6 +93,10 @@
             </ul>
           </div>
 
+          <NuxtLink to="/forget-password" class="link text-right">
+            Forget Password?
+          </NuxtLink>
+
           <div class="card-actions justify-end">
             <button v-if="!isSubmitting" type="submit" class="btn btn-primary">
               Login

@@ -31,3 +31,31 @@
     border-bottom-right-radius: 0.5rem;
   }
 }
+
+.otp-input-container {
+  gap: 1rem;
+
+  input {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ql-toolbar.ql-snow,
+  .ql-container {
+    border: 1px solid #a6adbb33!important;
+  }
+
+  .ql-toolbar.ql-snow {
+    background-color: #12171d;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+
+  .ql-container {
+    background-color: #1d232a;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+}
