@@ -16,6 +16,7 @@ export type Fact = {
   cover_image: string
   references: string
   author: FactAuthor
+  is_published: boolean
 }
 
 export type FactAuthor = {

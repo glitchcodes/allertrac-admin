@@ -45,6 +45,7 @@ const openDeleteModal = (fact: Fact) => {
         <th class="hidden md:table-cell">Brief Description</th>
         <th>Category</th>
         <th>Author</th>
+        <th>Status</th>
         <th></th>
       </tr>
       </thead>
@@ -62,7 +63,12 @@ const openDeleteModal = (fact: Fact) => {
         <td>
           {{ fact.author.full_name }}
         </td>
-        <td class="flex gap-2">
+        <td>
+          <div class="badge text-nowrap" :class="{ 'badge-success': fact.is_published, 'badge-warning': !fact.is_published }">
+            {{ fact.is_published ? 'Published' : 'Not published' }}
+          </div>
+        </td>
+        <td class="actions flex gap-2">
           <NuxtLink :to="`/facts/${ fact.id }`" class="btn btn-accent btn-sm">
             <PencilSquareIcon class="size-5"/>
           </NuxtLink>
@@ -81,5 +87,7 @@ const openDeleteModal = (fact: Fact) => {
 </template>
 
 <style scoped>
-
+  .badge.badge-success, .actions a, .actions button {
+    color: white;
+  }
 </style>

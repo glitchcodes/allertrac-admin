@@ -74,6 +74,7 @@
   })
 
   const isSubmittingForm = ref<boolean>(false);
+  const isPublishing = ref<boolean>(false);
 
   const form = reactive({
     title: fact.value.title || '',
@@ -81,6 +82,7 @@
     category: fact.value.category_id || '',
     cover_image: [] as File[],
     description: fact.value.description || '',
+    is_published: fact.value.is_published || false
   });
 
   // Cover Image URL
@@ -88,6 +90,13 @@
 
   const inputErrors = ref<any>({
     cover_image: []
+  })
+
+  // Update is_published status whenever the toggle is clicked
+  watch(() => form.is_published, async () => {
+    if (isPublishing.value) return;
+
+    await handleUpdatePublishStatus();
   })
 
   const handleSubmitForm = async () => {
@@ -117,6 +126,29 @@
       if (e instanceof FetchError) {
         console.error(e);
       }
+    }
+  }
+
+  const handleUpdatePublishStatus = async () => {
+    try {
+      isPublishing.value = true;
+
+      const { data } = await useFetch(`/api/facts/${route.params.id}/publish`, {
+        method: 'PATCH',
+        body: {
+          is_published: form.is_published
+        }
+      });
+
+      if (data.value) {
+        fact.value.is_published = data.value.fact.is_published
+      }
+    } catch (e) {
+      if (e instanceof FetchError) {
+        console.error(e);
+      }
+    } finally {
+      isPublishing.value = false;
     }
   }
 
@@ -223,6 +255,14 @@
             <h1 class="text-2xl font-bold flex-1">
               Preview
             </h1>
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <span class="label-text mr-4">
+                  {{ fact.is_published ? 'Published' : 'Not published' }}
+                </span>
+                <input v-model="form.is_published" type="checkbox" class="toggle" :class="{ 'toggle-success': fact.is_published }" :disabled="isPublishing" :checked="form.is_published" />
+              </label>
+            </div>
           </div>
 
           <div class="card bg-base-100">
