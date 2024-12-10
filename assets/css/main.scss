@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 //@keyframes modal-pop {
 //  0% {
 //    opacity: 0;
@@ -13,23 +11,31 @@
 //  }
 //}
 
-@media (prefers-color-scheme: dark) {
-  .ql-toolbar.ql-snow,
-  .ql-container {
-    border: 1px solid #a6adbb33!important;
-  }
+.menu li > :not(ul, .menu-title, details, .btn):active, .menu li > :not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+  background-color: oklch(var(--p));
+  color: white;
+}
 
-  .ql-toolbar.ql-snow {
-    background-color: #12171d;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-  }
+.table thead th {
+  color: black;
+  font-size: 14px;
+}
 
-  .ql-container {
-    background-color: #1d232a;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-  }
+.ql-toolbar.ql-snow,
+.ql-container {
+  border: 1px solid #a6adbb33!important;
+}
+
+.ql-toolbar.ql-snow {
+  background-color: oklch(var(--n));
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.ql-container {
+  background-color: oklch(var(--n));
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .otp-input-container {
@@ -41,21 +47,21 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .ql-toolbar.ql-snow,
-  .ql-container {
-    border: 1px solid #a6adbb33!important;
-  }
-
-  .ql-toolbar.ql-snow {
-    background-color: #12171d;
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-  }
-
-  .ql-container {
-    background-color: #1d232a;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-  }
-}
+//@media (prefers-color-scheme: dark) {
+//  .ql-toolbar.ql-snow,
+//  .ql-container {
+//    border: 1px solid #a6adbb33!important;
+//  }
+//
+//  .ql-toolbar.ql-snow {
+//    background-color: #12171d;
+//    border-top-left-radius: 0.5rem;
+//    border-top-right-radius: 0.5rem;
+//  }
+//
+//  .ql-container {
+//    background-color: #1d232a;
+//    border-bottom-left-radius: 0.5rem;
+//    border-bottom-right-radius: 0.5rem;
+//  }
+//}

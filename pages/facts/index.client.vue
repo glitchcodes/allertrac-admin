@@ -116,7 +116,7 @@
       </label>
 
       <details class="dropdown dropdown-end">
-        <summary class="btn">
+        <summary class="btn shadow">
           <AdjustmentsHorizontalIcon class="size-5" />
         </summary>
         <div class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 mt-3 p-4 pt-2 shadow border border-base-200">
@@ -148,11 +148,8 @@
     </div>
     <div v-if="!isFetching && !hasFetchErrors">
       <div v-if="facts && facts.length > 0">
-        <div class="md:card md:bg-base-300">
-          <div class="md:card-body">
-            <FactsTable v-if="facts" :facts="facts" limit="10" @delete-fact="handleDeleteFact"  />
-          </div>
-        </div>
+        <FactsCards v-if="facts" :facts="facts" limit="10" @delete-fact="handleDeleteFact" />
+<!--        <FactsTable v-if="facts" :facts="facts" limit="10" @delete-fact="handleDeleteFact"  />-->
 
         <Pagination v-if="facts"
                     class="mt-6"

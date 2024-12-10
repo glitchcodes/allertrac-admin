@@ -11,13 +11,13 @@
 </script>
 
 <template>
-  <div class="card bg-base-200 shadow-xl">
+  <div class="card bg-primary text-white shadow-xl">
     <div v-if="status === 'success'" class="card-body">
       <h2 class="card-title mb-3">
         Allergens
       </h2>
       <div class="flex flex-wrap gap-2">
-        <div v-for="allergen in allergens" class="badge badge-primary">
+        <div v-for="allergen in allergens" class="badge badge-white">
           {{ allergen.name }}
         </div>
       </div>

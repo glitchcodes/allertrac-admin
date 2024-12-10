@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <div class="card bg-base-200 shadow-xl">
+  <div class="card bg-primary text-white shadow-xl">
     <div v-if="status === 'success'" class="card-body">
       <h2 class="card-title mb-3">
         Recent facts

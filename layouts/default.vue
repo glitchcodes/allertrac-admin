@@ -17,12 +17,12 @@
 <template>
   <main>
     <div class="flex min-h-screen">
-      <aside class="w-full max-w-80 bordered hidden md:block sidebar-wrapper" :class="{ '-ml-80': !isSidebarOpen }">
+      <aside class="w-[320px] bordered hidden md:block !border-r-[1px] !border-black/10 sidebar-wrapper" :class="{ '-ml-80': !isSidebarOpen }">
         <Sidebar :open="isSidebarOpen" @close="() => isSidebarOpen = !isSidebarOpen" />
       </aside>
 
       <div class="flex-1">
-        <div class="navbar px-4 md:px-8 border-b border-white/10 gap-2">
+        <div class="navbar px-4 md:px-8 !border-b !border-black/10 gap-2">
           <div v-if="!isSidebarOpen" class="flex-none">
             <div class="tooltip tooltip-bottom" data-tip="Open sidebar">
               <button class="btn btn-ghost" @click="() => isSidebarOpen = !isSidebarOpen">
@@ -38,7 +38,7 @@
               <li>
                 <details>
                   <summary>{{ user?.full_name }}</summary>
-                  <ul class="bg-base-100 rounded-t-none p-2">
+                  <ul class="bg-base-100 rounded-t-none p-2 shadow border border-base-200 w-full z-[9999]">
                     <li>
                       <NuxtLink to="/logout">
                         Logout

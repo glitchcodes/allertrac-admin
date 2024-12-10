@@ -77,11 +77,7 @@
     </div>
     <div v-if="status === 'success'">
       <div v-if="data && data.payload.data.length > 0">
-        <div class="md:card md:bg-base-300">
-          <div class="md:card-body">
-            <MealTable v-if="data" :meals="data.payload" limit="10"  />
-          </div>
-        </div>
+        <MealTable v-if="data" :meals="data.payload" limit="10"  />
 
         <Pagination v-if="data"
                     class="mt-6"

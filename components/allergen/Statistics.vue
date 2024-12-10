@@ -23,13 +23,14 @@
           {
             label: 'Users',
             data: statistics.value.map(s => s.user_count),
-            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            backgroundColor: '#336267',
             borderColor: 'rgba(75, 192, 192, 1)'
           }
         ]
       },
       options: {
-        responsive: true
+        responsive: true,
+        maintainAspectRatio: false
       }
     }
   })
@@ -42,15 +43,20 @@
         Allergen Statistics
       </h2>
 
-      <Bar id="my-chart-id"
-           :options="chartOptions.options"
-           :data="chartOptions.data"
-      />
+      <div class="chart-container">
+        <Bar id="my-chart-id"
+             :options="chartOptions.options"
+             :data="chartOptions.data"
+        />
+      </div>
 
     </div>
   </div>
 </template>
 
 <style scoped>
-
+  .chart-container {
+    position: relative;
+    height: 20rem;
+  }
 </style>

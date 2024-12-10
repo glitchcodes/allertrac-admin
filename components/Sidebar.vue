@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <section class="flex items-center gap-1 mb-4 px-1 h-[64px]">
+  <section class="flex items-center gap-1 mb-4 px-4 h-[64px]">
     <img src="/images/logo-128x128.png" class="w-[60px]" alt="AllerTrac" />
     <p class="text-md font-bold flex-1">
       AllerTrac
@@ -29,21 +29,21 @@
   </section>
 
   <section>
-    <ul class="menu menu-md gap-2">
+    <ul class="menu menu-md gap-2 px-4">
       <li>
-        <NuxtLink to="/" active-class="active">
+        <NuxtLink to="/" active-class="active shadow">
           <HomeIcon class="size-5" />
           <span>Home</span>
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/facts" active-class="active">
+        <NuxtLink to="/facts" active-class="active shadow">
           <AcademicCapIcon class="size-5" />
           Facts Database
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/meals" active-class="active">
+        <NuxtLink to="/meals" active-class="active shadow">
           <RectangleStackIcon class="size-5" />
           Food Database
         </NuxtLink>
