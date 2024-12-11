@@ -52,6 +52,12 @@ const openDeleteModal = (fact: Fact) => {
         </p>
 
         <div class="card-actions mt-4">
+          <div class="badge text-nowrap" :class="{ 'badge-info': fact.is_published, 'badge-warning': !fact.is_published }">
+            {{ fact.is_published ? 'Published' : 'Not published' }}
+          </div>
+        </div>
+
+        <div class="card-actions mt-2">
           <NuxtLink :to="`/facts/${ fact.id }`" class="btn btn-accent btn-sm">
             <PencilSquareIcon class="size-5"/>
           </NuxtLink>
@@ -63,7 +69,7 @@ const openDeleteModal = (fact: Fact) => {
     </div>
   </section>
 
-<!--  <div class="overflow-x-auto">-->
+            <!--  <div class="overflow-x-auto">-->
 <!--    <table class="table table-sm md:table-md table-auto">-->
 <!--      &lt;!&ndash; head &ndash;&gt;-->
 <!--      <thead>-->
