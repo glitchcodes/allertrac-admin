@@ -63,10 +63,10 @@
 
 <template>
   <div class="auth-container">
-    <div class="card bg-base-200 w-96 shadow-xl">
+    <div class="card bg-[#ecf2f3] w-96 shadow-xl">
       <div class="card-body">
-        <h2 class="text-xl font-bold">
-          AllerTrac - Login
+        <h2 class="text-2xl font-bold text-center">
+          Sign In
         </h2>
         <form class="flex flex-col gap-4 mt-4" @submit.prevent="handleSubmitForm">
           <div>
@@ -97,11 +97,11 @@
             Forget Password?
           </NuxtLink>
 
-          <div class="card-actions justify-end">
-            <button v-if="!isSubmitting" type="submit" class="btn btn-primary">
+          <div class="card-actions justify-center">
+            <button v-if="!isSubmitting" type="submit" class="btn btn-primary btn-wide rounded-full">
               Login
             </button>
-            <button v-else class="btn btn-primary" disabled>
+            <button v-else class="btn btn-primary btn-wide rounded-full" disabled>
               <span class="loading loading-spinner loading-md"></span>
             </button>
           </div>
