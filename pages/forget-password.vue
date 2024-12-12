@@ -62,7 +62,7 @@
 
 <template>
   <div class="auth-container">
-    <div class="card bg-[#ecf2f3] w-96 shadow-xl">
+    <div class="card bg-[#ecf2f3] md:w-96 shadow-xl">
       <div class="card-body gap-4">
         <NuxtLink to="/login" class="flex items-center gap-2">
           <ArrowLeftIcon class="size-5" />

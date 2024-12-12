@@ -91,7 +91,7 @@
 
 <template>
   <div class="auth-container">
-    <div class="card bg-[#ecf2f3] w-96 shadow-xl">
+    <div class="card bg-[#ecf2f3] md:w-96 shadow-xl">
       <div class="card-body">
         <h2 class="text-2xl font-bold text-center">
           Reset Password
